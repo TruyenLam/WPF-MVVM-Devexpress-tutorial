@@ -5,6 +5,8 @@
     xmlns:ViewModels="clr-namespace:WPF_MVVM_Devexpress_tutorial.ViewModels"
     xmlns:dxdo="http://schemas.devexpress.com/winfx/2008/xaml/docking"
     xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+    xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
     x:Class="WPF_MVVM_Devexpress_tutorial.Mainxaml"
     Title="Mainxaml" Height="768" Width="1366" WindowState="Maximized" WindowStartupLocation="CenterScreen"
     >
@@ -15,8 +17,52 @@
     <Grid>
         <dxdo:DockLayoutManager>
             <dxdo:LayoutGroup Caption="LayoutRoot" Orientation="Vertical" >
-                <dxdo:LayoutPanel Caption="Panel1" ItemHeight="0.69*" ShowCaption="False" ShowPinButton="False" ShowCloseButton="False"
-                                  AllowDrag="False"/>
+                <dxdo:LayoutPanel Caption="Panel1" ItemHeight="0.4*" ShowCaption="False" ShowPinButton="False" ShowCloseButton="False"
+                                  AllowDrag="False">
+                    <dxlc:LayoutControl Orientation="Vertical">
+                        <dxlc:LayoutItem >
+                            <dxlc:DockLayoutControl>
+                                <dx:SimpleButton Content="Load" 
+                                                 Command="{Binding Btn_LoadDS_SP}"
+                                                 Glyph="{dx:DXImage SvgImages/Icon Builder/Actions_Reload.svg}"/>
+                                <dx:SimpleButton Content="Save" Glyph="{dx:DXImage SvgImages/XAF/Action_SaveScript.svg}"/>
+                                <dx:SimpleButton Content="Delete" Glyph="{dx:DXImage SvgImages/DiagramIcons/del.svg}"/>
+                                <dx:SimpleButton Content="Cancel" Glyph="{dx:DXImage SvgImages/XAF/Action_Cancel.svg}"/>
+                            </dxlc:DockLayoutControl>
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutGroup >
+                           <dxlc:LayoutGroup Orientation="Vertical">
+                            <dxlc:LayoutItem Label="LayoutItem">
+                                <dxe:TextEdit/>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="LayoutItem">
+                                <dxe:TextEdit/>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="LayoutItem">
+                                <dxe:TextEdit/>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="LayoutItem">
+                                <dxe:TextEdit/>
+                            </dxlc:LayoutItem>
+                        </dxlc:LayoutGroup>
+                        <dxlc:LayoutGroup Orientation="Vertical">
+                            <dxlc:LayoutItem Label="LayoutItem">
+                                <dxe:TextEdit/>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="LayoutItem">
+                                <dxe:TextEdit/>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="LayoutItem">
+                                <dxe:TextEdit/>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="LayoutItem">
+                                <dxe:TextEdit/>
+                            </dxlc:LayoutItem>
+                        </dxlc:LayoutGroup>
+                        </dxlc:LayoutGroup>
+                        
+                    </dxlc:LayoutControl>
+                </dxdo:LayoutPanel>
                 <dxdo:LayoutPanel Caption="Danh sách sản phẩm" ItemHeight="1.31*" ShowPinButton="False" ShowCloseButton="False"
                                   AllowDrag="False">
                     <dxg:GridControl AutoGenerateColumns="AddNew" 
@@ -25,7 +71,7 @@
                         <dxg:GridControl.View>
                             <dxg:TableView ShowAutoFilterRow="True">
                                 <dxg:TableView.ColumnHeaderStyle>
-                                    <Style TargetType="dxg:BaseGridHeader">
+                                    <Style TargetType="{x:Type dxg:BaseGridHeader}">
                                         <Setter Property="dxg:BaseGridColumnHeader.ShowFilterButtonOnHover" Value="False" />
                                         <Setter Property="Background" Value="LightSkyBlue" />
                                     </Style>
@@ -48,5 +94,6 @@
                 </dxdo:LayoutPanel>
             </dxdo:LayoutGroup>
         </dxdo:DockLayoutManager>
+
     </Grid>
 </dx:ThemedWindow>
